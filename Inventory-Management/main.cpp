@@ -1,3 +1,5 @@
+#include "item.h"
+
 #include <iostream>
 #include <vector>
 #include <iomanip>
@@ -160,10 +162,14 @@ void Find (vector<int> *vecOfInts)
     cout << "Please, input the number u want to find" << endl;
     cin >> number;
 
-    auto it = find(vecOfInts->begin (), vecOfInts->end (), number);
-    if(it != vecOfInts->end ())
+    auto element = find(vecOfInts->begin (), vecOfInts->end (), number);
+
+    auto index = distance(vecOfInts->begin(), element);
+
+    if(element != vecOfInts->end ())
     {
-        cout << "We find your number: " << *it << endl;
+        cout << "We find your number: " << *element
+             << "\n Find at index: [ " << index << " ]" << endl;
     }else
     {
         cout << "This number doesn't exist in list" << endl;
