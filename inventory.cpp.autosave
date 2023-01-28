@@ -1,0 +1,58 @@
+#include "inventory.h"
+
+inventory::inventory()
+{
+
+}
+
+int inventory::getCOD ()
+{
+    
+}
+
+int inventory::getQtt ()
+{
+
+}
+
+string inventory::getDate()
+{
+
+}
+
+string inventory::getStatus()
+{
+
+}
+
+string inventory::getRecipient()
+{
+
+}
+
+////////////////////////////////////////////////
+///////////////////////////////////////////////
+void inventory::setCOD (int cod)
+{
+
+}
+
+void inventory::setQtt (int qtt)
+{
+
+}
+
+void inventory::setDate(string date)
+{
+
+}
+
+void inventory::setStatus(string status)
+{
+
+}
+
+void inventory::setRecipient(string recipient)
+{
+
+}
