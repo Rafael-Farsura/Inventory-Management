@@ -1,8 +1,19 @@
 #pragma once
 
+#include <algorithm>
 #include <iostream>
-#include <vector>
+#include <iterator>
+#include <iomanip>
+#include <limits>
+#include <memory>
 #include <string>
+#include <vector>
+
+#include <QCoreApplication>
+#include <QTextStream>
+#include <QIODevice>
+#include <QString>
+#include <QFile>
 
 class Product
 {
@@ -37,7 +48,3 @@ public:
     void setRecipient(std::string);
 
 };
-
-void displayInventory(const std::vector<Product> &inventory);
-void CreatingItem(std::vector<Product>&inventory);
-

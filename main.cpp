@@ -1,39 +1,30 @@
 #include "product.h"
 
-#include <vector>
-#include <iomanip>
-#include <string>
-#include <memory>
-#include<limits>
-
-using namespace std;
-
-
 void DisplayMenu();
-void CreatingItem(vector<Product>&inventory);
-void displayProd(const vector<Product> &inventory);
-void Find (const vector<Product>&);
+void CreatingItem(std::vector<Product>&inventory);
+void displayProd(const std::vector<Product> &inventory);
+void Find (const std::vector<Product>&);
+void Save(std::vector<Product>&inventory);
 
 int main() ////
 {   system("CLS");
-
+    QCoreApplication a();
     const auto max_size = std::numeric_limits<std::streamsize>::max ();
 
 
     /// Variables
 
-    vector <int> lista {}; /////////
+    std::vector <int> lista {}; /////////
     char opt {};
 
-    vector<Product>inventory{};
-
+    std::vector<Product>inventory{};
     /// Initializing Program
-    cout << "Welcome to my Inventory Management" << endl;
+    std::cout << "Welcome to my Inventory Management" << std::endl;
     do{
         /// Menu
         DisplayMenu ();
-        cin >> opt;
-        cin.ignore(max_size, '\n');
+        std::cin >> opt;
+        std::cin.ignore(max_size, '\n');
         opt = tolower (opt);
 
         switch(opt)
@@ -52,17 +43,23 @@ int main() ////
             Find(inventory);
             break;
 
+        case 's':
+            /// Saving the full inventory in .csv
+            Save(inventory);
+
+            break;
+
         case 'q':
             ///  Exiting program :(
             system("CLS");
-            cout << "\n\n\n\n"
+            std::cout << "\n\n\n\n"
                     "Goodbye...... "
                     "\n\n\n\n";
             break;
 
         default:
             /// what fuck u doing ?
-            cout << "Something is wrong \n\n" << endl;
+            std::cout << "Something is wrong \n\n" << std::endl;
             break;
         }
     } while (opt != 'q');
@@ -74,11 +71,10 @@ int main() ////
 
 void DisplayMenu()
 {
-    cout << "Select an option: \n";
-    cout << "D - Display inventory \n"
+    std::cout << "Select an option: \n";
+    std::cout << "D - Display inventory \n"
             "C - Create an item  \n"
             "F - Find a number in list \n"
-            "Q - Quit " << endl;
+            "S - Save inventory \n"
+            "Q - Quit " << std::endl;
 }
-
-

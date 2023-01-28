@@ -173,3 +173,42 @@ void Find (const std::vector<Product> &inventory)
     {   system ("CLS");
         std::cout << "The inventory is empty!! Please add an item inside that \n\n\n" << std::endl;  }
 }
+
+void Save(std::vector<Product>&inventory)
+{
+
+    if(!inventory.empty())
+    {   QString savefolder = "C:/Users/rafae/Desktop/Inventory-Management/Save/";
+        QFile file(savefolder + "Inventory.csv");
+
+        if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QTextStream stream(&file);
+            // Escrever cabeçalho
+            stream << "COD,Quantity,Item Name,Receipt Date,Recipient's name,Item Status " << "\n";
+            for (auto it:inventory) {
+                QString codStr = QString::number(it.getCod());
+                QString qttStr = QString::number(it.getQtt());
+                QString itemStr = QString::fromStdString(it.getItem());
+                QString dateStr = QString::fromStdString(it.getDate());
+                QString recipientStr = QString::fromStdString(it.getRecipient());
+                QString sttsStr = QString::fromStdString(it.getStatus());
+                // Escrever atributos em uma mesma linha
+                stream << codStr << "," << qttStr << "," << itemStr << "," << dateStr << "," << recipientStr << "," << sttsStr << "\n";
+            }
+            // Verificar se escrita foi bem-sucedida
+            if(stream.status() != QTextStream::Ok)
+            {
+                std::cout << "erro na escrita" << std::endl;
+            }else
+                std::cout << "Inventory has been saved" << std::endl;
+        }
+        else
+        {
+            std::cout << "erro na abertura do arquivo" << std::endl;
+        }
+        file.close();   }
+    else
+    { std::cout << "The inventory is empty!!!" << std::endl; }
+}
+
+
